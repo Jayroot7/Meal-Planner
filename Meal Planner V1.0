@@ -1,0 +1,25 @@
+import pandas as pd
+import random
+meal = pd.read_excel(r'filepath to excel')
+meal_dict = meal.T.to_dict()
+
+def meal_selector():
+    selected_meal =[]
+    l = len(meal_dict)
+
+    while len(selected_meal)<5:
+
+    #Pick a random meal
+        for x in range(5):
+            r = random.randint(0, l-1)
+            selected_meal.append(meal_dict[r]['Meal'])
+        #Remove duplicate choice
+            selected_meal = [*set(selected_meal)]
+
+    #Print the final list of meals
+    y=0
+    for x in range(5):
+        print(selected_meal[y])
+        y=y+1
+        
+meal_selector()
